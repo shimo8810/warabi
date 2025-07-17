@@ -7,7 +7,12 @@ authors = [
     { name = "shimo8810", email = "shimo.8810@gmail.com" },
 ]
 requires-python = ">=3.13"
-dependencies = ["janome>=0.5.0"]
+dependencies = [
+    "janome>=0.5.0",
+    "sudachidict-core>=20250515",
+    "sudachipy>=0.6.10",
+    "vibrato>=0.2.0",
+]
 
 [build-system]
 requires = ["hatchling"]
