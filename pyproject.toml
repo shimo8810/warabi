@@ -1,7 +1,7 @@
 [project]
-name = "hechima"
+name = "warabi"
 version = "0.1.0"
-description = "Add your description here"
+description = "tiny full text search db for Japanese text"
 readme = "README.md"
 authors = [
     { name = "shimo8810", email = "shimo.8810@gmail.com" },
@@ -11,6 +11,7 @@ dependencies = [
     "janome>=0.5.0",
     "sudachidict-core>=20250515",
     "sudachipy>=0.6.10",
+    "tinydb>=4.8.2",
     "vibrato>=0.2.0",
 ]
 
@@ -37,6 +38,6 @@ select = [
     "N",   # pep8-naming
     "B",   # flake8-bugbear
     # "ANN", # flake8-annotations
-    "S",   # flake8-bandit
-    "PT",  # flake8-pytest-style
+    "S",  # flake8-bandit
+    "PT", # flake8-pytest-style
 ]
