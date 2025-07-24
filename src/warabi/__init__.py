@@ -1,2 +1,3 @@
-def hello() -> str:
-    return "Hello from warabi!"
+from .db import WarabiDB
+
+__all__ = ["WarabiDB"]

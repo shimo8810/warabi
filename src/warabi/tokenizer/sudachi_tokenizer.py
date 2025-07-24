@@ -21,6 +21,5 @@ class SudachiTokenizer(Tokenizer):
         Returns:
             A generator of tokens.
         """
-        tokens = self._tokenizer.tokenize(text, self._mode)
-        for t in tokens:
+        for t in self._tokenizer.tokenize(text, self._mode):
             yield t.surface()
