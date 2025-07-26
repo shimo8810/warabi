@@ -82,20 +82,19 @@ class SqlLite3FullTextSearchEngine(FullTextSearchEngine):
         Args:
             doc: A dictionary representing the document to insert.
         """
-        data = tuple(
-            {
-                "text_id": str(uuid.uuid4()),
-                "doc_id": doc_id,
-                "key": k,
-                "text": self._tokenize(v),
-            }
-            for k, v in _flatten_document(doc).items()
-        )
 
         self._cursor.executemany(
             "INSERT INTO texts (text_id, doc_id, key, text)"
             "VALUES (:text_id, :doc_id, :key, :text)",
-            data,
+            tuple(
+                {
+                    "text_id": str(uuid.uuid4()),
+                    "doc_id": doc_id,
+                    "key": k,
+                    "text": self._tokenize(v),
+                }
+                for k, v in _flatten_document(doc).items()
+            ),
         )
         self._conn.commit()
 
