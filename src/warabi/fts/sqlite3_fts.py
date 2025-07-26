@@ -32,6 +32,10 @@ class SqlLite3FullTextSearchEngine(FullTextSearchEngine):
         )
         self._conn.commit()
 
+    def __del__(self):
+        """Ensure the database connection is closed"""
+        self._conn.close()
+
     def search(self, query: str) -> list[str]:
         """Search for documents matching the query.
         Args:
