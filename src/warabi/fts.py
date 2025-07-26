@@ -5,7 +5,7 @@ import uuid
 from abc import abstractmethod
 from typing import Protocol
 
-from .common import DocumentId
+from .common import Document, DocumentId
 from .tokenizer import Tokenizer
 
 
@@ -21,7 +21,7 @@ class FullTextSearchEngine(Protocol):
         raise NotImplementedError
 
     @abstractmethod
-    def insert(self, doc: dict, doc_id: DocumentId) -> None:
+    def insert(self, doc: Document, doc_id: DocumentId) -> None:
         """Insert a document into the full-text search index.
 
         Args:
@@ -77,7 +77,7 @@ class SqlLite3FullTextSearchEngine(FullTextSearchEngine):
         )
         return [r[1] for r in self._cursor.fetchall()]
 
-    def insert(self, doc: dict, doc_id: DocumentId) -> None:
+    def insert(self, doc: Document, doc_id: DocumentId) -> None:
         """Insert a document into the full-text search index.
 
         Args:
@@ -131,7 +131,7 @@ class SqlLite3FullTextSearchEngine(FullTextSearchEngine):
         )
 
 
-def _flatten_document(doc: dict) -> dict[str, str]:
+def _flatten_document(doc: Document) -> dict[str, str]:
     """Flatten a nested document dictionary
 
     This function flattens a nested dictionary into a single-level dictionary
