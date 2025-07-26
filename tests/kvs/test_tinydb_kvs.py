@@ -15,12 +15,9 @@ def in_memory_kvs() -> TinyDbKVStore:
 
 
 @pytest.fixture
-def file_kvs():
+def file_kvs(tmp_path: Path) -> TinyDbKVStore:
     """Fixture for a file-based TinyDbKVStore that is cleaned up."""
-
-    with tempfile.NamedTemporaryFile(suffix=".json") as file:
-        kv = TinyDbKVStore(path=file.name)
-        yield kv
+    return TinyDbKVStore(tmp_path / "test.db")
 
 
 @pytest.fixture(params=["in_memory", "file"])
