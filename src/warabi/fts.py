@@ -5,6 +5,7 @@ import uuid
 from abc import abstractmethod
 from typing import Protocol
 
+from .common import DocumentId
 from .tokenizer import Tokenizer
 
 
@@ -20,7 +21,7 @@ class FullTextSearchEngine(Protocol):
         raise NotImplementedError
 
     @abstractmethod
-    def insert(self, doc: dict, doc_id: str) -> None:
+    def insert(self, doc: dict, doc_id: DocumentId) -> None:
         """Insert a document into the full-text search index.
 
         Args:
@@ -29,7 +30,7 @@ class FullTextSearchEngine(Protocol):
         raise NotImplementedError
 
     @abstractmethod
-    def delete(self, doc_id: str) -> None:
+    def delete(self, doc_id: DocumentId) -> None:
         """Delete a document from the full-text search index.
 
         Args:
@@ -76,7 +77,7 @@ class SqlLite3FullTextSearchEngine(FullTextSearchEngine):
         )
         return [r[1] for r in self._cursor.fetchall()]
 
-    def insert(self, doc: dict, doc_id: str) -> None:
+    def insert(self, doc: dict, doc_id: DocumentId) -> None:
         """Insert a document into the full-text search index.
 
         Args:
@@ -98,7 +99,7 @@ class SqlLite3FullTextSearchEngine(FullTextSearchEngine):
         )
         self._conn.commit()
 
-    def delete(self, doc_id: str) -> None:
+    def delete(self, doc_id: DocumentId) -> None:
         """Delete a document from the full-text search index.
         Args:
             doc_id: The ID of the document to delete.
