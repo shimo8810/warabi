@@ -246,12 +246,6 @@ wheels = [
 ]
 
 [[package]]
-name = "vibrato"
-version = "0.2.0"
-source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/3d/26/7abfb51bd807f40f39f3dfa2985db8599df5eb277940dc76a6ee105ff600/vibrato-0.2.0.tar.gz", hash = "sha256:d30e14d17463bd079a9b9e1a7a0ab48366f6aefc932647ed9504e6c815698464", size = 18296, upload-time = "2023-04-13T07:05:49.809Z" }
-
-[[package]]
 name = "warabi"
 version = "0.1.0"
 source = { editable = "." }
@@ -260,7 +254,6 @@ dependencies = [
     { name = "sudachidict-core" },
     { name = "sudachipy" },
     { name = "tinydb" },
-    { name = "vibrato" },
 ]
 
 [package.dev-dependencies]
@@ -278,7 +271,6 @@ requires-dist = [
     { name = "sudachidict-core", specifier = ">=20250515" },
     { name = "sudachipy", specifier = ">=0.6.10" },
     { name = "tinydb", specifier = ">=4.8.2" },
-    { name = "vibrato", specifier = ">=0.2.0" },
 ]
 
 [package.metadata.requires-dev]
