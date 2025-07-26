@@ -12,7 +12,6 @@ dependencies = [
     "sudachidict-core>=20250515",
     "sudachipy>=0.6.10",
     "tinydb>=4.8.2",
-    "vibrato>=0.2.0",
 ]
 
 [build-system]
