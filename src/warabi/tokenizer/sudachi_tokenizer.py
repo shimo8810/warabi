@@ -3,7 +3,7 @@ from collections.abc import Generator
 import sudachipy.dictionary
 import sudachipy.tokenizer
 
-from ..tokenizer import Tokenizer
+from . import Tokenizer
 
 
 class SudachiTokenizer(Tokenizer):

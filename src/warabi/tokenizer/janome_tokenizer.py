@@ -2,7 +2,7 @@ from collections.abc import Generator
 
 import janome.tokenizer
 
-from ..tokenizer import Tokenizer
+from . import Tokenizer
 
 
 class JanomeTokenizer(Tokenizer):
