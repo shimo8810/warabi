@@ -30,6 +30,11 @@ class FullTextSearchEngine(Protocol):
 
     @abstractmethod
     def delete(self, doc_id: str) -> None:
+        """Delete a document from the full-text search index.
+
+        Args:
+            doc_id: The ID of the document to delete.
+        """
         raise NotImplementedError
 
 
@@ -95,7 +100,15 @@ class SqlLite3FullTextSearchEngine(FullTextSearchEngine):
         self._conn.commit()
 
     def delete(self, doc_id: str) -> None:
-        raise NotImplementedError
+        """Delete a document from the full-text search index.
+        Args:
+            doc_id: The ID of the document to delete.
+        """
+        self._cursor.execute(
+            "DELETE FROM texts WHERE doc_id = ?",
+            (doc_id,),
+        )
+        self._conn.commit()
 
     def _tokenize(self, text: str) -> str:
         """Tokenize a given text using the configured tokenizer.
