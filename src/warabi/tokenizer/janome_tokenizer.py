@@ -19,9 +19,9 @@ class JanomeTokenizer(Tokenizer):
         Returns:
             A generator of tokens.
         """
-        tokens = self._tokenizer.tokenize(
+        for t in self._tokenizer.tokenize(
             text,
             wakati=True,
-        )
-        for t in tokens:
-            yield str(t)
+        ):
+            if token := str(t).strip():
+                yield token
