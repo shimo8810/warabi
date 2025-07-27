@@ -9,4 +9,8 @@ tasks:
   test:
     desc: Run tests
     cmds:
-      - uv run pytest --cov=src --cov-report=html --cov-report=term -n auto
+      - uv run pytest ./tests --cov=src --cov-report=html --cov-report=term -n auto
+  benchmark:
+    desc: Run benchmarks
+    cmds:
+      - uv run pytest ./benches --benchmark-only
